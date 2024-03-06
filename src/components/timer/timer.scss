@@ -1,0 +1,88 @@
+@import "../../variable";
+
+.timer {
+  position: relative;
+  width: 410px;
+  height: 410px;
+  box-shadow: 50px 50px 100px 0px rgb(18, 21, 48),
+    -50px -50px 100px 0px rgb(39, 44, 90);
+  background: linear-gradient(-45deg, rgb(46, 50, 90) 0%, rgb(14, 17, 42) 100%);
+  border-radius: 100%;
+  margin: 0 auto;
+  margin-top: 45px;
+
+  &__circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgb(22, 25, 50);
+    width: 366px;
+    height: 366px;
+    border-radius: 100%;
+  }
+
+  &__count {
+    color: rgb(215, 224, 255);
+    font-family: $kumbh;
+    font-size: 100px;
+    font-weight: 700;
+    line-height: 101px;
+    letter-spacing: -1px;
+    text-align: center;
+    margin: 0;
+    margin-top: 123px;
+    margin-right: -4px;
+  }
+
+  &__btn {
+    margin-top: 29px;
+    margin-left: 15px;
+    color: rgb(215, 224, 255);
+    font-family: $kumbh;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 15px;
+    text-align: center;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  &__btn:hover {
+    color: rgb(248, 112, 112);
+  }
+}
+
+.skills {
+  &-graph-circle {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    padding: 10px 0;
+    margin: auto;
+    &__title {
+      color: white;
+      font-weight: 300;
+      letter-spacing: 2px;
+    }
+    &__count {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      color: white;
+      transform: translate(-50%, -50%);
+      &:after {
+        content: "%";
+      }
+    }
+    &__bar {
+      stroke: tomato;
+    }
+    &__backg {
+      stroke: transparentize(tomato, 0.7);
+    }
+  }
+}

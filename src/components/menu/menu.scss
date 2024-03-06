@@ -1,0 +1,246 @@
+@import "../../variable";
+
+.menu {
+  &__icon {
+    margin-top: 63px;
+    cursor: pointer;
+  }
+
+  &__settings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 540px;
+    height: 464px;
+    background-color: white;
+    &-closed {
+      display: none;
+    }
+    &-head {
+      display: flex;
+      justify-content: space-between;
+
+      span {
+        margin-left: 40px;
+        margin-top: 34px;
+        color: rgb(22, 25, 50);
+        font-family: $kumbh;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 28px;
+        letter-spacing: 0px;
+        text-align: left;
+      }
+
+      img {
+        margin-right: 38.64px;
+        margin-top: 47.64px;
+        cursor: pointer;
+      }
+    }
+  }
+  &__line {
+    margin-top: 31px;
+    width: 100%;
+    height: 1px;
+    background: rgb(227, 225, 225);
+  }
+
+  &__minutes {
+    &-time {
+      color: rgb(22, 25, 50);
+      font-family: $kumbh;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 13px;
+      letter-spacing: 5px;
+      text-align: left;
+      text-transform: uppercase;
+      margin-top: 28px;
+      margin-left: 40px;
+    }
+  }
+
+  &__select {
+    display: flex;
+    width: 462px;
+    margin: 0 auto;
+    &-name {
+      margin-top: 24px;
+      color: rgb(30, 33, 63);
+      font-family: $kumbh;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 12px;
+      letter-spacing: 0px;
+      text-align: left;
+      opacity: 0.4;
+    }
+
+    &-input {
+      display: flex;
+      justify-content: space-between;
+      width: 140px;
+      height: 48px;
+      border-radius: 10px;
+
+      background: rgb(239, 241, 250);
+
+      span {
+        margin-top: 15px;
+        margin-left: 16px;
+        color: rgb(30, 33, 63);
+        font-family: $kumbh;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 14px;
+        letter-spacing: 0px;
+        text-align: left;
+      }
+    }
+    &-arrows {
+      display: flex;
+      flex-direction: column;
+      margin-top: 15px;
+      margin-right: 16px;
+    }
+
+    &-item {
+      margin-right: 20px;
+    }
+  }
+
+  &__font {
+    display: flex;
+    justify-content: space-between;
+    &-name {
+      margin-left: 40px;
+      margin-top: 40px;
+      color: rgb(22, 25, 50);
+      font-family: $kumbh;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 13px;
+      letter-spacing: 5px;
+      text-align: left;
+      text-transform: uppercase;
+    }
+    &-list {
+      display: flex;
+      margin-top: 24px;
+      margin-right: 38px;
+    }
+
+    &-style {
+      width: 40px;
+      height: 33px;
+      background: rgb(239, 241, 250);
+      border-radius: 100%;
+      margin-left: 16px;
+      padding-top: 7px;
+      cursor: pointer;
+
+      span {
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 15px;
+        letter-spacing: 0px;
+        opacity: 0.73;
+        margin-top: 8px;
+        text-align: left;
+      }
+    }
+    &-style:hover {
+      background: rgb(22, 25, 50);
+      color: white;
+      span:hover {
+        opacity: 1;
+      }
+    }
+
+    &-kumbh {
+      font-family: $kumbh;
+    }
+
+    &-roboto {
+      font-family: $roboto;
+    }
+
+    &-mono {
+      font-family: $space;
+    }
+  }
+
+  &__color {
+    display: flex;
+    justify-content: space-between;
+
+    &-name {
+      width: 66px;
+      height: 13px;
+      color: rgb(22, 25, 50);
+      font-family: $kumbh;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 13px;
+      letter-spacing: 5px;
+      text-align: left;
+      margin-top: 40px;
+      margin-left: 40px;
+      text-transform: uppercase;
+    }
+
+    &-list {
+      display: flex;
+
+      margin-top: 24px;
+      margin-right: 38px;
+    }
+    &-style {
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      margin-left: 16px;
+      cursor: pointer;
+    }
+
+    &-red {
+      background: rgb(248, 112, 112);
+    }
+
+    &-blue {
+      background: rgb(112, 243, 248);
+    }
+
+    &-purple {
+      background: rgb(216, 129, 248);
+    }
+  }
+
+  &__button {
+    border-radius: 26.5px;
+    width: 140px;
+    height: 53px;
+    background: rgb(248, 112, 112);
+    border: none;
+
+    color: rgb(255, 255, 255);
+    font-family: $kumbh;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0px;
+    text-align: center;
+    margin-top: 30px;
+    cursor: pointer;
+  }
+}
+
+.arrowUp {
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+.arrowDown {
+  cursor: pointer;
+}

@@ -1,0 +1,66 @@
+@import "../../variable";
+
+.pomodoro {
+  position: relative;
+  z-index: 1;
+  &__logo {
+    margin-top: 48px;
+  }
+
+  &__buttons {
+    width: 373px;
+    height: 63px;
+    border-radius: 31.5px;
+    background: rgb(22, 25, 50);
+    margin: 0 auto;
+    margin-top: 55px;
+  }
+
+  &__btn {
+    border: none;
+    border-radius: 31.5px;
+    width: 120px;
+    height: 48px;
+    background: rgb(22, 25, 50);
+    opacity: 0.4;
+    color: white;
+    font-family: $kumbh;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 14px;
+    letter-spacing: 0px;
+    text-align: center;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  &__btn:hover {
+    color: white;
+    opacity: 1;
+  }
+}
+.active {
+  border-radius: 26.5px;
+  opacity: 1 !important;
+  background: $red;
+  color: black;
+}
+
+.red {
+  background-color: #f87070;
+  opacity: 1;
+  color: black;
+}
+
+.blue {
+  background-color: #70f3f8;
+  opacity: 1;
+  color: black;
+}
+
+.purple {
+  background-color: #d881f8;
+  opacity: 1;
+  color: black;
+}
