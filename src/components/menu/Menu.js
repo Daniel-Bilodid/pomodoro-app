@@ -25,16 +25,23 @@ const Menu = ({
 }) => {
   let [submitToggle, setSubmitToggle] = useState(false);
   let [closed, setClose] = useState(true);
+  const [activeColor, setActiveColor] = useState("red");
+  const [buttonColor, setButtonColor] = useState("#f87070");
+  const [tempPomodoro, setTempPomodoro] = useState(pomodoro);
+  const [tempShort, setTempShort] = useState(short);
+  const [tempLong, setTempLong] = useState(long);
+  const [tempColor, setTempColor] = useState(activeColor);
+  const [tempButtonColor, setTempButtonColor] = useState(buttonColor);
 
   const onClose = () => {
     setClose((closed = true));
 
     if (!submitToggle) {
-      updatePomodoro((pomodoro = 25));
-      updateShort((short = 5));
-      updateLong((long = 10));
-      updateColor("red");
-      setButtonColor("#f87070");
+      updatePomodoro(tempPomodoro);
+      updateShort(tempShort);
+      updateLong(tempLong);
+      updateColor(tempColor);
+      setButtonColor(tempButtonColor);
     }
   };
   const onOpen = () => {
@@ -72,9 +79,6 @@ const Menu = ({
     }
   };
 
-  const [activeColor, setActiveColor] = useState("red");
-  const [buttonColor, setButtonColor] = useState("#f87070");
-
   const handleColorListClick = (e) => {
     const clickedColor = e.target.dataset.color;
 
@@ -97,6 +101,11 @@ const Menu = ({
   };
   const handeSubmit = () => {
     setSubmitToggle((submitToggle = true));
+    setTempPomodoro(pomodoro);
+    setTempShort(short);
+    setTempLong(long);
+    setTempColor(activeColor);
+    setTempButtonColor(buttonColor);
     setClose((closed = true));
   };
 
