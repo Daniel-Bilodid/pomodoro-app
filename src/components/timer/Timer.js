@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-const Timer = ({ pomodoro, short, long, toggleType }) => {
+const Timer = ({ pomodoro, short, long, toggleType, activeColor }) => {
   let [minutes, setMinutes] = useState(0);
   // const [time, setTime] = useState(25);
   const [seconds, setSeconds] = useState(0);
@@ -12,6 +12,7 @@ const Timer = ({ pomodoro, short, long, toggleType }) => {
   const [timerBtn, setTimerBtn] = useState("Start");
   let [timerType, setTimerType] = useState(pomodoro);
   let [progress, setProgress] = useState(timerType * 60);
+  let [timerColor, setTimerColor] = useState("#f87070");
 
   // useEffect(() => {
   //   if (totalTimeInSeconds !== 0) {
@@ -39,7 +40,20 @@ const Timer = ({ pomodoro, short, long, toggleType }) => {
       setProgress(timerType * 60);
       setTimerType(long);
     }
-  }, [toggleType, pomodoro, short, long, timerType]);
+
+    switch (activeColor) {
+      case "red":
+        setTimerColor("#f87070");
+        break;
+      case "blue":
+        setTimerColor("#70f3f8");
+        break;
+      case "purple":
+        setTimerColor("#d881f8");
+        break;
+      default:
+    }
+  }, [toggleType, pomodoro, short, long, timerType, activeColor]);
 
   useEffect(() => {
     let timer;
@@ -52,6 +66,8 @@ const Timer = ({ pomodoro, short, long, toggleType }) => {
               if (prevMinutes === 0) {
                 clearInterval(timer);
                 setIsRunning(false);
+                setSeconds(0);
+                setTimerBtn("restart");
                 return 0;
               }
               return prevMinutes - 1;
@@ -62,7 +78,6 @@ const Timer = ({ pomodoro, short, long, toggleType }) => {
         });
 
         setProgress(progress - 1);
-        console.log(progress);
       }, 1000);
     }
 
@@ -70,6 +85,9 @@ const Timer = ({ pomodoro, short, long, toggleType }) => {
   }, [isRunning, minutes, seconds, progress]);
 
   const startTimer = () => {
+    if (timerBtn === "restart") {
+      restartTimer();
+    }
     setIsRunning((prevIsRunning) => {
       if (prevIsRunning) {
         setTimerBtn("start");
@@ -80,19 +98,24 @@ const Timer = ({ pomodoro, short, long, toggleType }) => {
     });
   };
 
+  const restartTimer = () => {
+    setMinutes(timerType);
+    setProgress(timerType * 60);
+  };
+
   return (
     <div className="timer">
       <div className="timer__circle">
         <CircularProgressbar
           value={progress}
-          text={`${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`}
           maxValue={timerType * 60}
+          strokeWidth={3}
           styles={buildStyles({
             strokeLinecap: "butt",
             textSize: "16px",
-            pathColor: "#007BFF",
+            pathColor: timerColor,
             textColor: "#007BFF",
-            trailColor: "#d6d6d6",
+            trailColor: "#161932",
           })}
         />
         <p className="timer__count">{`${minutes}:${
@@ -111,6 +134,7 @@ const mapStateToProps = (state) => ({
   short: state.short,
   long: state.long,
   toggleType: state.toggleType,
+  activeColor: state.activeColor,
 });
 
 export default connect(mapStateToProps)(Timer);
