@@ -38,6 +38,7 @@ const Menu = ({
 
   const [bodyEl, setBodyEl] = useState(bodyElement);
   const [tempBodyEl, setTempBodyEl] = useState(bodyEl);
+  const controls = useAnimation();
 
   useEffect(() => {
     const storedPomodoro = parseInt(localStorage.getItem("pomodoro"), 10);
@@ -76,7 +77,6 @@ const Menu = ({
   };
 
   const onClose = () => {
-    setClose((closed = true));
     endAnimation();
     if (!submitToggle) {
       updatePomodoro(tempPomodoro);
@@ -88,10 +88,8 @@ const Menu = ({
     }
   };
 
-  const controls = useAnimation();
-
   const startAnimation = async () => {
-    await controls.start({ translateY: -267, transition: { duration: 0.8 } });
+    await controls.start({ translateY: -355, transition: { duration: 0.8 } });
   };
 
   const onOpen = () => {
@@ -192,7 +190,7 @@ const Menu = ({
     setTempLong(long);
     setTempColor(activeColor);
     setTempButtonColor(buttonColor);
-    setClose((closed = true));
+
     setTempBodyEl(bodyEl);
     endAnimation();
   };

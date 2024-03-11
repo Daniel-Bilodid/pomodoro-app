@@ -106,25 +106,27 @@ const Timer = ({ pomodoro, short, long, toggleType, activeColor }) => {
 
   return (
     <div className="timer">
-      <div className="timer__circle">
-        <CircularProgressbar
-          value={progress}
-          maxValue={timerType * 60}
-          strokeWidth={3}
-          styles={buildStyles({
-            strokeLinecap: "butt",
-            textSize: "16px",
-            pathColor: timerColor,
-            textColor: "#007BFF",
-            trailColor: "#161932",
-          })}
-        />
-        <p className="timer__count">{`${minutes}:${
-          seconds < 10 ? `0${seconds}` : seconds
-        }`}</p>
-        <button className="timer__btn" onClick={startTimer}>
-          {timerBtn}
-        </button>
+      <div className="circle__t">
+        <div className="timer__circle">
+          <CircularProgressbar
+            value={progress}
+            maxValue={timerType * 60}
+            strokeWidth={3}
+            styles={buildStyles({
+              strokeLinecap: "butt",
+              textSize: "16px",
+              pathColor: timerColor,
+              textColor: "#007BFF",
+              trailColor: "#161932",
+            })}
+          />
+          <p className="timer__count">{`${minutes}:${
+            seconds < 10 ? `0${seconds}` : seconds
+          }`}</p>
+          <button className="timer__btn" onClick={startTimer}>
+            {timerBtn}
+          </button>
+        </div>
       </div>
     </div>
   );

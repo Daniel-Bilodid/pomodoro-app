@@ -1,7 +1,10 @@
 @import "../../variable";
 
 .menu {
+  position: relative;
+  z-index: 3;
   &__icon {
+    position: relative;
     margin-top: 63px;
     cursor: pointer;
     display: block !important;
@@ -18,6 +21,7 @@
     background-color: white;
     &-closed {
       // display: none;
+      display: none;
     }
     &-head {
       display: flex;

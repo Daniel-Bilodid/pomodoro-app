@@ -17,8 +17,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background: rgb(22, 25, 50);
-    width: 366px;
-    height: 366px;
+    width: 339px;
+    height: 339px;
     border-radius: 100%;
   }
 
@@ -34,7 +34,7 @@
     margin: 0;
     margin-top: -252px;
     margin-right: -4px;
-    margin-left: 55px;
+    margin-left: 35px;
   }
 
   &__btn {
@@ -51,6 +51,9 @@
     background: none;
     text-transform: uppercase;
     cursor: pointer;
+    pointer-events: auto;
+
+    z-index: 2;
   }
 
   &__btn:hover {
@@ -87,4 +90,16 @@
       stroke: transparentize(tomato, 0.7);
     }
   }
+}
+
+.circle__t {
+  width: 366px;
+  height: 366px;
+  background: rgb(22, 25, 50);
+  border-radius: 100%;
+  margin-top: 22px;
+  margin-left: 22px;
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
 }
