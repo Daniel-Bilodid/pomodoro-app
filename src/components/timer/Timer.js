@@ -78,11 +78,12 @@ const Timer = ({ pomodoro, short, long, toggleType, activeColor }) => {
         });
 
         setProgress(progress - 1);
+        console.log(timerColor);
       }, 1000);
     }
 
     return () => clearInterval(timer);
-  }, [isRunning, minutes, seconds, progress]);
+  }, [isRunning, minutes, seconds, progress, timerColor]);
 
   const startTimer = () => {
     if (timerBtn === "restart") {

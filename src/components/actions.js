@@ -27,3 +27,8 @@ export const updateColor = (value) => ({
   type: "UPDATE_COLOR",
   payload: value,
 });
+
+export const updateBtn = (value) => ({
+  type: "UPDATE_BTN",
+  payload: value,
+});

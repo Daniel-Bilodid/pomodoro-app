@@ -1,11 +1,17 @@
 // reducers.js
+
+const initialActiveColor = localStorage.getItem("activeColor");
+
+const initialButtonColor = localStorage.getItem("buttonColor");
+
 const initialState = {
-  pomodoro: 25,
+  pomodoro: localStorage.getItem("pomodoro"),
   short: 5,
   long: 15,
   closed: true,
   toggleType: "pomodoro",
-  activeColor: "red",
+  activeColor: initialActiveColor,
+  buttonColor: initialButtonColor,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -22,6 +28,8 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, toggleType: action.payload };
     case "UPDATE_COLOR":
       return { ...state, activeColor: action.payload };
+    case "UPDATE_BTN":
+      return { ...state, buttonColor: action.payload };
     default:
       return state;
   }

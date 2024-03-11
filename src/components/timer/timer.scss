@@ -23,8 +23,9 @@
   }
 
   &__count {
+    width: 268px;
     color: rgb(215, 224, 255);
-    font-family: $kumbh;
+
     font-size: 100px;
     font-weight: 700;
     line-height: 101px;
@@ -33,13 +34,14 @@
     margin: 0;
     margin-top: -252px;
     margin-right: -4px;
+    margin-left: 55px;
   }
 
   &__btn {
     margin-top: 29px;
     margin-left: 15px;
     color: rgb(215, 224, 255);
-    font-family: $kumbh;
+
     font-size: 16px;
     font-weight: 700;
     line-height: 16px;

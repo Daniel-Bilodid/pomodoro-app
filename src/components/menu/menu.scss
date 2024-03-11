@@ -4,9 +4,11 @@
   &__icon {
     margin-top: 63px;
     cursor: pointer;
+    display: block !important;
   }
 
   &__settings {
+    border-radius: 25px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -15,7 +17,7 @@
     height: 464px;
     background-color: white;
     &-closed {
-      display: none;
+      // display: none;
     }
     &-head {
       display: flex;
@@ -25,7 +27,7 @@
         margin-left: 40px;
         margin-top: 34px;
         color: rgb(22, 25, 50);
-        font-family: $kumbh;
+
         font-size: 28px;
         font-weight: 700;
         line-height: 28px;
@@ -50,7 +52,7 @@
   &__minutes {
     &-time {
       color: rgb(22, 25, 50);
-      font-family: $kumbh;
+
       font-size: 13px;
       font-weight: 700;
       line-height: 13px;
@@ -69,7 +71,7 @@
     &-name {
       margin-top: 24px;
       color: rgb(30, 33, 63);
-      font-family: $kumbh;
+
       font-size: 12px;
       font-weight: 700;
       line-height: 12px;
@@ -91,7 +93,7 @@
         margin-top: 15px;
         margin-left: 16px;
         color: rgb(30, 33, 63);
-        font-family: $kumbh;
+
         font-size: 14px;
         font-weight: 700;
         line-height: 14px;
@@ -118,7 +120,7 @@
       margin-left: 40px;
       margin-top: 40px;
       color: rgb(22, 25, 50);
-      font-family: $kumbh;
+
       font-size: 13px;
       font-weight: 700;
       line-height: 13px;
@@ -180,7 +182,7 @@
       width: 66px;
       height: 13px;
       color: rgb(22, 25, 50);
-      font-family: $kumbh;
+
       font-size: 13px;
       font-weight: 700;
       line-height: 13px;
@@ -226,7 +228,7 @@
     border: none;
 
     color: rgb(255, 255, 255);
-    font-family: $kumbh;
+
     font-size: 16px;
     font-weight: 700;
     line-height: 16px;
@@ -243,4 +245,17 @@
 }
 .arrowDown {
   cursor: pointer;
+}
+
+.menu__color-style span {
+  display: none;
+}
+
+span.active__color {
+  display: block;
+}
+
+span svg {
+  margin-top: 15px;
+  margin-left: 2px;
 }
