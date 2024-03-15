@@ -4,14 +4,17 @@ const initialActiveColor = localStorage.getItem("activeColor");
 
 const initialButtonColor = localStorage.getItem("buttonColor");
 
+const initialFont = localStorage.getItem("activeFont");
+
 const initialState = {
-  pomodoro: localStorage.getItem("pomodoro"),
-  short: 5,
-  long: 15,
+  pomodoro: parseInt(localStorage.getItem("pomodoro"), 10),
+  short: parseInt(localStorage.getItem("short"), 10),
+  long: parseInt(localStorage.getItem("long"), 10),
   closed: true,
   toggleType: "pomodoro",
   activeColor: initialActiveColor,
   buttonColor: initialButtonColor,
+  activeFont: initialFont,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -30,6 +33,8 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, activeColor: action.payload };
     case "UPDATE_BTN":
       return { ...state, buttonColor: action.payload };
+    case "UPDATE_FONT":
+      return { ...state, activeFont: action.payload };
     default:
       return state;
   }

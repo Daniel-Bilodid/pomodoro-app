@@ -4,7 +4,14 @@ import { connect } from "react-redux";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-const Timer = ({ pomodoro, short, long, toggleType, activeColor }) => {
+const Timer = ({
+  pomodoro,
+  short,
+  long,
+  toggleType,
+  activeColor,
+  activeFont,
+}) => {
   let [minutes, setMinutes] = useState(0);
   // const [time, setTime] = useState(25);
   const [seconds, setSeconds] = useState(0);
@@ -13,6 +20,12 @@ const Timer = ({ pomodoro, short, long, toggleType, activeColor }) => {
   let [timerType, setTimerType] = useState(pomodoro);
   let [progress, setProgress] = useState(timerType * 60);
   let [timerColor, setTimerColor] = useState("#f87070");
+  let [timerFont, setTimerFont] = useState("kumbh");
+
+  useEffect(() => {
+    console.log(activeFont);
+    console.log(activeColor);
+  }, [activeFont, activeColor]);
 
   // useEffect(() => {
   //   if (totalTimeInSeconds !== 0) {
@@ -53,7 +66,30 @@ const Timer = ({ pomodoro, short, long, toggleType, activeColor }) => {
         break;
       default:
     }
-  }, [toggleType, pomodoro, short, long, timerType, activeColor]);
+
+    switch (activeFont) {
+      case "kumbh":
+        setTimerFont("timer__count kumbh");
+        break;
+      case "roboto":
+        setTimerFont("timer__count roboto");
+        break;
+      case "mono":
+        setTimerFont("timer__count mono");
+        break;
+      default:
+    }
+  }, [
+    toggleType,
+    pomodoro,
+    short,
+    long,
+    timerType,
+    activeColor,
+    activeFont,
+    timerFont,
+    timerColor,
+  ]);
 
   useEffect(() => {
     let timer;
@@ -78,7 +114,6 @@ const Timer = ({ pomodoro, short, long, toggleType, activeColor }) => {
         });
 
         setProgress(progress - 1);
-        console.log(timerColor);
       }, 1000);
     }
 
@@ -120,9 +155,9 @@ const Timer = ({ pomodoro, short, long, toggleType, activeColor }) => {
               trailColor: "#161932",
             })}
           />
-          <p className="timer__count">{`${minutes}:${
-            seconds < 10 ? `0${seconds}` : seconds
-          }`}</p>
+          <h1 className={`timer__count ${activeFont}`}>{`${
+            minutes < 10 ? `0${minutes}` : minutes
+          }:${seconds < 10 ? `0${seconds}` : seconds}`}</h1>
           <button className="timer__btn" onClick={startTimer}>
             {timerBtn}
           </button>
@@ -138,6 +173,7 @@ const mapStateToProps = (state) => ({
   long: state.long,
   toggleType: state.toggleType,
   activeColor: state.activeColor,
+  activeFont: state.activeFont,
 });
 
 export default connect(mapStateToProps)(Timer);

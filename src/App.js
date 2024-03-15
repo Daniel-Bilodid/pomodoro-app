@@ -6,8 +6,11 @@ import Menu from "./components/menu/Menu";
 function App() {
   return (
     <div className="App">
-      <Pomodoro />
-      <Timer />
+      <div className="app__opacity">
+        <Pomodoro />
+        <Timer />
+      </div>
+
       <Menu />
     </div>
   );

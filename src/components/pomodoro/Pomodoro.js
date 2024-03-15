@@ -56,7 +56,7 @@ const Pomodoro = ({
               data-type={button.type}
               onClick={(e) => handleButton(e, button.type)}
             >
-              {button.label}
+              <span className="pomodoro__button-label">{button.label}</span>
             </button>
           ))}
         </div>

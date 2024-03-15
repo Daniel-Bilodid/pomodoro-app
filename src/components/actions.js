@@ -32,3 +32,8 @@ export const updateBtn = (value) => ({
   type: "UPDATE_BTN",
   payload: value,
 });
+
+export const updateFont = (value) => ({
+  type: "UPDATE_FONT",
+  payload: value,
+});

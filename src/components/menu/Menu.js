@@ -13,6 +13,8 @@ import {
   updateLong,
   toggleClosed,
   updateColor,
+  updateBtn,
+  updateFont,
 } from "../actions";
 
 const Menu = ({
@@ -20,25 +22,30 @@ const Menu = ({
   short,
   long,
   activeColor,
+  buttonColor,
+  activeFont,
   updatePomodoro,
   updateShort,
   updateLong,
   updateColor,
+  updateBtn,
+  updateFont,
 }) => {
   let [submitToggle, setSubmitToggle] = useState(false);
   let [closed, setClose] = useState(true);
 
-  const [buttonColor, setButtonColor] = useState("#f87070");
   const [tempPomodoro, setTempPomodoro] = useState(pomodoro);
   const [tempShort, setTempShort] = useState(short);
   const [tempLong, setTempLong] = useState(long);
   const [tempColor, setTempColor] = useState(activeColor);
   const [tempButtonColor, setTempButtonColor] = useState(buttonColor);
   const bodyElement = document.querySelector("body");
-
+  const appOpacity = document.querySelector(".app__opacity");
   const [bodyEl, setBodyEl] = useState(bodyElement);
   const [tempBodyEl, setTempBodyEl] = useState(bodyEl);
   const controls = useAnimation();
+
+  const [fontStyle, setFontStyle] = useState("kumbh");
 
   useEffect(() => {
     const storedPomodoro = parseInt(localStorage.getItem("pomodoro"), 10);
@@ -46,6 +53,7 @@ const Menu = ({
     const storedLong = parseInt(localStorage.getItem("long"), 10);
     const storedColor = localStorage.getItem("activeColor");
     const storedButtonColor = localStorage.getItem("buttonColor");
+    const storedFont = localStorage.getItem("activeFont");
 
     if (!isNaN(storedPomodoro)) {
       updatePomodoro(storedPomodoro);
@@ -59,51 +67,65 @@ const Menu = ({
     if (storedColor) {
       updateColor(storedColor);
     }
+    if (storedFont) {
+      updateFont(storedFont);
+    }
 
     if (storedButtonColor) {
-      setButtonColor(storedButtonColor);
+      updateBtn(storedButtonColor);
     }
   }, []);
   useEffect(() => {
     localStorage.setItem("pomodoro", pomodoro.toString());
+
     localStorage.setItem("short", short.toString());
     localStorage.setItem("long", long.toString());
     localStorage.setItem("activeColor", activeColor);
     localStorage.setItem("buttonColor", buttonColor);
-  }, [pomodoro, short, long, activeColor, buttonColor]);
+    localStorage.setItem("activeFont", activeFont);
+  }, [pomodoro, short, long, activeColor, buttonColor, closed, activeFont]);
 
   const endAnimation = async () => {
-    await controls.start({ translateY: 450, transition: { duration: 0.8 } });
+    appOpacity.style.opacity = 1;
+    bodyElement.style.background = "rgb(30, 33, 63)";
+    await controls.start({ translateY: 950, transition: { duration: 0.7 } });
   };
 
   const onClose = () => {
+    appOpacity.style.opacity = 1;
+    bodyElement.style.background = "rgb(30, 33, 63)";
+
     endAnimation();
     if (!submitToggle) {
       updatePomodoro(tempPomodoro);
       updateShort(tempShort);
       updateLong(tempLong);
       updateColor(tempColor);
-      setButtonColor(tempButtonColor);
+      updateBtn(tempButtonColor);
       setBodyEl(tempBodyEl);
     }
   };
 
   const startAnimation = async () => {
-    await controls.start({ translateY: -355, transition: { duration: 0.8 } });
+    await controls.start({ translateY: -355, transition: { duration: 0.7 } });
   };
 
   const onOpen = () => {
+    const bodyElement = document.querySelector("body");
+    const appOpacity = document.querySelector(".app__opacity");
+    appOpacity.style.opacity = 0.5;
+    bodyElement.style.background = "rgb(10, 12, 28)";
+
     setClose((closed = false));
     setSubmitToggle((submitToggle = false));
     startAnimation();
-
-    console.log("hi");
   };
 
   const handleArrowClickUp = (type) => {
     switch (type) {
       case "pomodoro":
         updatePomodoro(pomodoro + 5);
+
         break;
       case "short":
         updateShort(short + 5);
@@ -146,13 +168,13 @@ const Menu = ({
     }
     switch (clickedColor) {
       case "red":
-        setButtonColor("#f87070");
+        updateBtn("#f87070");
         break;
       case "blue":
-        setButtonColor("#70f3f8");
+        updateBtn("#70f3f8");
         break;
       case "purple":
-        setButtonColor("#d881f8");
+        updateBtn("#d881f8");
         break;
       default:
     }
@@ -161,27 +183,28 @@ const Menu = ({
   const handleFontList = (e) => {
     const clickedFont = e.target.dataset.font;
 
-    if (clickedFont) {
-      switch (clickedFont) {
-        case "kumbh":
-          setBodyEl(
-            (bodyElement.style.fontFamily = "'Kumbh Sans', sans-serif")
-          );
+    setFontStyle(clickedFont);
 
-          break;
-        case "roboto":
-          setBodyEl((bodyElement.style.fontFamily = "'Roboto Slab', serif"));
+    switch (clickedFont) {
+      case "kumbh":
+        setBodyEl((bodyElement.style.fontFamily = "'Kumbh Sans', sans-serif"));
 
-          break;
-        case "mono":
-          setBodyEl((bodyElement.style.fontFamily = "'Space Mono', monospace"));
+        break;
+      case "roboto":
+        setBodyEl((bodyElement.style.fontFamily = "'Roboto Slab', serif"));
 
-          break;
-        default:
-          break;
-      }
+        break;
+      case "mono":
+        setBodyEl((bodyElement.style.fontFamily = "'Space Mono', monospace"));
+
+        break;
+      default:
     }
   };
+
+  useEffect(() => {
+    updateFont(fontStyle);
+  }, [fontStyle]);
 
   const handeSubmit = () => {
     setSubmitToggle((submitToggle = true));
@@ -258,22 +281,28 @@ const Menu = ({
 
               <div className="menu__font-list" onClick={handleFontList}>
                 <div
-                  className="menu__font-kumbh menu__font-style"
+                  className={`menu__font-kumbh menu__font-style ${
+                    activeFont === "kumbh" ? "active__font" : ""
+                  }`}
                   data-font="kumbh"
                 >
-                  <span>Aa</span>
+                  Aa
                 </div>
                 <div
-                  className="menu__font-roboto menu__font-style"
+                  className={`menu__font-roboto menu__font-style ${
+                    activeFont === "roboto" ? "active__font" : ""
+                  }`}
                   data-font="roboto"
                 >
-                  <span>Aa</span>
+                  Aa
                 </div>
                 <div
-                  className="menu__font-mono menu__font-style"
+                  className={`menu__font-mono menu__font-style ${
+                    activeFont === "mono" ? "active__font" : ""
+                  }`}
                   data-font="mono"
                 >
-                  <span>Aa</span>
+                  Aa
                 </div>
               </div>
             </div>
@@ -387,6 +416,8 @@ const mapStateToProps = (state) => ({
   short: state.short,
   long: state.long,
   activeColor: state.activeColor,
+  buttonColor: state.buttonColor,
+  activeFont: state.activeFont,
 });
 
 const mapDispatchToProps = {
@@ -395,6 +426,8 @@ const mapDispatchToProps = {
   updateLong,
   toggleClosed,
   updateColor,
+  updateBtn,
+  updateFont,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);

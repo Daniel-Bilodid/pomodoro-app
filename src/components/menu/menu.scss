@@ -5,7 +5,7 @@
   z-index: 3;
   &__icon {
     position: relative;
-    margin-top: 63px;
+    margin-top: 64px;
     cursor: pointer;
     display: block !important;
   }
@@ -20,7 +20,6 @@
     height: 464px;
     background-color: white;
     &-closed {
-      // display: none;
       display: none;
     }
     &-head {
@@ -82,6 +81,7 @@
       letter-spacing: 0px;
       text-align: left;
       opacity: 0.4;
+      margin-bottom: 8px;
     }
 
     &-input {
@@ -158,8 +158,6 @@
       }
     }
     &-style:hover {
-      background: rgb(22, 25, 50);
-      color: white;
       span:hover {
         opacity: 1;
       }
@@ -238,7 +236,7 @@
     line-height: 16px;
     letter-spacing: 0px;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 22px;
     cursor: pointer;
   }
 }
@@ -262,4 +260,90 @@ span.active__color {
 span svg {
   margin-top: 15px;
   margin-left: 2px;
+}
+
+@media (max-width: 510px) {
+  .menu {
+    &__line {
+      margin-top: 24px;
+    }
+    &__select {
+      flex-direction: column;
+      width: 327px;
+      margin-top: 18.68px;
+
+      &-item {
+        display: flex;
+        justify-content: space-between;
+      }
+      &-name {
+        margin-left: 23px;
+      }
+
+      &-input {
+        margin-bottom: 8px;
+      }
+    }
+    &__settings {
+      width: 327px;
+      height: 549px;
+
+      &-head {
+        margin-top: 24px;
+        margin-left: 24px;
+        img {
+          margin: 0;
+          width: 14px;
+          height: 14px;
+          margin-right: 24px;
+        }
+
+        span {
+          margin: 0;
+          width: 78px;
+          height: 20px;
+          color: rgb(22, 25, 50);
+
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 20px;
+          letter-spacing: 0px;
+          text-align: left;
+        }
+      }
+    }
+    &__minutes {
+      &-time {
+        width: 146px;
+        margin-top: 24px;
+        margin-left: 93px;
+
+        color: rgb(22, 25, 50);
+
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 11px;
+        letter-spacing: 4.23px;
+        text-align: center;
+      }
+    }
+
+    &__font {
+      flex-direction: column;
+
+      &-name {
+        margin: 0 auto;
+        margin-top: 24px;
+      }
+
+      &-list {
+        justify-content: center;
+        margin-right: 16px;
+      }
+    }
+  }
+}
+.active__font {
+  background: rgb(22, 25, 50);
+  color: rgb(255, 255, 255);
 }

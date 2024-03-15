@@ -9,7 +9,7 @@
   background: linear-gradient(-45deg, rgb(46, 50, 90) 0%, rgb(14, 17, 42) 100%);
   border-radius: 100%;
   margin: 0 auto;
-  margin-top: 45px;
+  margin-top: 44px;
 
   &__circle {
     position: absolute;
@@ -23,25 +23,25 @@
   }
 
   &__count {
-    width: 268px;
+    width: 228px;
     color: rgb(215, 224, 255);
 
     font-size: 100px;
     font-weight: 700;
     line-height: 101px;
-    letter-spacing: -1px;
+
     text-align: center;
-    margin: 0;
-    margin-top: -252px;
+    margin: 0 auto;
+    margin-top: -230px;
     margin-right: -4px;
-    margin-left: 35px;
+    margin-left: 40px;
   }
 
   &__btn {
-    margin-top: 29px;
+    margin-top: 35px;
     margin-left: 15px;
     color: rgb(215, 224, 255);
-
+    font-family: unset;
     font-size: 16px;
     font-weight: 700;
     line-height: 16px;
@@ -102,4 +102,22 @@
   position: absolute;
   z-index: 1;
   pointer-events: none;
+}
+
+.mono {
+  width: 242px;
+  margin-right: 5px;
+  font-size: 100px;
+  font-weight: 400;
+
+  letter-spacing: -10px;
+}
+
+.roboto {
+  width: 230px;
+  margin-left: 49px;
+  font-size: 100px;
+  font-weight: 700;
+
+  letter-spacing: 0px;
 }
