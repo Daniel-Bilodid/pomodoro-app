@@ -64,3 +64,16 @@
   opacity: 1;
   color: black;
 }
+
+@media (max-width: 420px) {
+  .pomodoro {
+    &__buttons {
+      width: 327px;
+      height: 63px;
+    }
+
+    &__button {
+      width: 105.2px;
+    }
+  }
+}

@@ -262,10 +262,15 @@ span svg {
   margin-left: 2px;
 }
 
+.sub__line {
+  width: 460px;
+  margin-left: 40px;
+}
+
 @media (max-width: 510px) {
   .menu {
     &__line {
-      margin-top: 24px;
+      margin-top: 10px;
     }
     &__select {
       flex-direction: column;
@@ -341,6 +346,23 @@ span svg {
         margin-right: 16px;
       }
     }
+
+    &__color {
+      flex-direction: column;
+      &-name {
+        margin: 0 auto;
+        margin-top: 24px;
+      }
+      &-list {
+        justify-content: center;
+        margin-right: 16px;
+      }
+    }
+  }
+
+  .sub__line {
+    width: 280px;
+    margin-left: 23px;
   }
 }
 .active__font {

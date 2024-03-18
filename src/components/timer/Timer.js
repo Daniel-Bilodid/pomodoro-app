@@ -22,11 +22,6 @@ const Timer = ({
   let [timerColor, setTimerColor] = useState("#f87070");
   let [timerFont, setTimerFont] = useState("kumbh");
 
-  useEffect(() => {
-    console.log(activeFont);
-    console.log(activeColor);
-  }, [activeFont, activeColor]);
-
   // useEffect(() => {
   //   if (totalTimeInSeconds !== 0) {
   //     setProgress((progress = totalTimeInSeconds));
@@ -66,7 +61,7 @@ const Timer = ({
         break;
       default:
     }
-
+    
     switch (activeFont) {
       case "kumbh":
         setTimerFont("timer__count kumbh");

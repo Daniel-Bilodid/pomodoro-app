@@ -15,6 +15,7 @@ import {
   updateColor,
   updateBtn,
   updateFont,
+  updateBody,
 } from "../actions";
 
 const Menu = ({
@@ -24,12 +25,14 @@ const Menu = ({
   activeColor,
   buttonColor,
   activeFont,
+  bodyEl,
   updatePomodoro,
   updateShort,
   updateLong,
   updateColor,
   updateBtn,
   updateFont,
+  updateBody,
 }) => {
   let [submitToggle, setSubmitToggle] = useState(false);
   let [closed, setClose] = useState(true);
@@ -39,13 +42,14 @@ const Menu = ({
   const [tempLong, setTempLong] = useState(long);
   const [tempColor, setTempColor] = useState(activeColor);
   const [tempButtonColor, setTempButtonColor] = useState(buttonColor);
+  const [tempFont, setTempFont] = useState(activeFont);
   const bodyElement = document.querySelector("body");
   const appOpacity = document.querySelector(".app__opacity");
-  const [bodyEl, setBodyEl] = useState(bodyElement);
+
   const [tempBodyEl, setTempBodyEl] = useState(bodyEl);
   const controls = useAnimation();
 
-  const [fontStyle, setFontStyle] = useState("kumbh");
+  const [fontStyle, setFontStyle] = useState(activeFont);
 
   useEffect(() => {
     const storedPomodoro = parseInt(localStorage.getItem("pomodoro"), 10);
@@ -54,6 +58,7 @@ const Menu = ({
     const storedColor = localStorage.getItem("activeColor");
     const storedButtonColor = localStorage.getItem("buttonColor");
     const storedFont = localStorage.getItem("activeFont");
+    const storedBodyEl = localStorage.getItem("bodyEl");
 
     if (!isNaN(storedPomodoro)) {
       updatePomodoro(storedPomodoro);
@@ -73,6 +78,10 @@ const Menu = ({
 
     if (storedButtonColor) {
       updateBtn(storedButtonColor);
+    }
+
+    if (storedBodyEl) {
+      updateBody(storedBodyEl);
     }
   }, []);
   useEffect(() => {
@@ -102,7 +111,8 @@ const Menu = ({
       updateLong(tempLong);
       updateColor(tempColor);
       updateBtn(tempButtonColor);
-      setBodyEl(tempBodyEl);
+      updateBody(tempBodyEl);
+      updateFont(tempFont);
     }
   };
 
@@ -187,15 +197,15 @@ const Menu = ({
 
     switch (clickedFont) {
       case "kumbh":
-        setBodyEl((bodyElement.style.fontFamily = "'Kumbh Sans', sans-serif"));
+        updateBody("'Kumbh Sans', sans-serif");
 
         break;
       case "roboto":
-        setBodyEl((bodyElement.style.fontFamily = "'Roboto Slab', serif"));
+        updateBody("'Roboto Slab', serif");
 
         break;
       case "mono":
-        setBodyEl((bodyElement.style.fontFamily = "'Space Mono', monospace"));
+        updateBody("'Space Mono', monospace");
 
         break;
       default:
@@ -212,12 +222,14 @@ const Menu = ({
     setTempShort(short);
     setTempLong(long);
     setTempColor(activeColor);
+    setTempFont(activeFont);
     setTempButtonColor(buttonColor);
 
     setTempBodyEl(bodyEl);
+    bodyElement.style.fontFamily = bodyEl;
     endAnimation();
   };
-
+  console.log(activeFont);
   return (
     <>
       <div className="menu__icon">
@@ -246,7 +258,9 @@ const Menu = ({
             <div className="menu__select">
               {["pomodoro", "short", "long"].map((type) => (
                 <div key={type} className="menu__select-item">
-                  <div className="menu__select-name">{type}</div>
+                  <div className="menu__select-name">
+                    {type} {type !== "pomodoro" ? "break" : ""}
+                  </div>
                   <div className="menu__select-input">
                     <span>
                       {type === "pomodoro"
@@ -274,7 +288,7 @@ const Menu = ({
               ))}
             </div>
 
-            <div className="menu__line"></div>
+            <div className="menu__line sub__line"></div>
 
             <div className="menu__font">
               <div className="menu__font-name">font</div>
@@ -307,7 +321,7 @@ const Menu = ({
               </div>
             </div>
 
-            <div className="menu__line"></div>
+            <div className="menu__line sub__line"></div>
 
             <div className="menu__color">
               <div className="menu__color-name">color</div>
@@ -418,6 +432,7 @@ const mapStateToProps = (state) => ({
   activeColor: state.activeColor,
   buttonColor: state.buttonColor,
   activeFont: state.activeFont,
+  bodyEl: state.bodyEl,
 });
 
 const mapDispatchToProps = {
@@ -428,6 +443,7 @@ const mapDispatchToProps = {
   updateColor,
   updateBtn,
   updateFont,
+  updateBody,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);

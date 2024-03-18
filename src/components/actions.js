@@ -37,3 +37,8 @@ export const updateFont = (value) => ({
   type: "UPDATE_FONT",
   payload: value,
 });
+
+export const updateBody = (value) => ({
+  type: "UPDATE_BODY",
+  payload: value,
+});
