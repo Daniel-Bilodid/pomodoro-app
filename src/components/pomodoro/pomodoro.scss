@@ -7,6 +7,12 @@
     margin-top: 48px;
   }
 
+  &__button {
+    &-label {
+      margin-left: 4px;
+    }
+  }
+
   &__buttons {
     width: 373px;
     height: 63px;
@@ -31,6 +37,7 @@
     letter-spacing: 0px;
     text-align: center;
     margin-top: 8px;
+
     cursor: pointer;
     transition: background-color 0.3s ease;
   }

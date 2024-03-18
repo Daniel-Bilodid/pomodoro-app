@@ -5,14 +5,14 @@ import Menu from "./components/menu/Menu";
 
 function App() {
   return (
-    <div className="App">
+    <main className="App">
       <div className="app__opacity">
         <Pomodoro />
         <Timer />
       </div>
 
       <Menu />
-    </div>
+    </main>
   );
 }
 
