@@ -96,6 +96,14 @@ const Menu = ({
     if (isNaN(pomodoro)) {
       updatePomodoro(25);
     }
+
+    if (isNaN(short)) {
+      updateShort(5);
+    }
+
+    if (isNaN(long)) {
+      updateLong(15);
+    }
   }, [
     pomodoro,
     short,
@@ -105,6 +113,8 @@ const Menu = ({
     closed,
     activeFont,
     updatePomodoro,
+    updateShort,
+    updateLong,
   ]);
 
   const endAnimation = async () => {
