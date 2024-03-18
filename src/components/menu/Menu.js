@@ -92,7 +92,20 @@ const Menu = ({
     localStorage.setItem("activeColor", activeColor);
     localStorage.setItem("buttonColor", buttonColor);
     localStorage.setItem("activeFont", activeFont);
-  }, [pomodoro, short, long, activeColor, buttonColor, closed, activeFont]);
+
+    if (isNaN(pomodoro)) {
+      updatePomodoro(25);
+    }
+  }, [
+    pomodoro,
+    short,
+    long,
+    activeColor,
+    buttonColor,
+    closed,
+    activeFont,
+    updatePomodoro,
+  ]);
 
   const endAnimation = async () => {
     appOpacity.style.opacity = 1;
