@@ -267,12 +267,6 @@ span svg {
   margin-left: 40px;
 }
 
-@media (max-width: 1600px) {
-  .menu__icon {
-    margin-top: 25px;
-  }
-}
-
 @media (max-width: 510px) {
   .menu {
     &__line {
@@ -374,4 +368,10 @@ span svg {
 .active__font {
   background: rgb(22, 25, 50);
   color: rgb(255, 255, 255);
+}
+
+@media (max-width: 1600px) {
+  .menu__icon {
+    margin-top: 25px;
+  }
 }

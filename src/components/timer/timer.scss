@@ -122,12 +122,6 @@
   letter-spacing: 0px;
 }
 
-@media (max-width: 1600px) {
-  .timer {
-    margin-top: 32px;
-  }
-}
-
 @media (max-width: 420px) {
   .timer {
     width: 300px;
@@ -154,5 +148,11 @@
     width: 267.8px;
     height: 267.8px;
     margin: 16.1px;
+  }
+}
+
+@media (max-width: 1600px) {
+  .timer {
+    margin-top: 32px;
   }
 }

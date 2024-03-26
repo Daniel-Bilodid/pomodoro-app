@@ -72,12 +72,6 @@
   color: black;
 }
 
-@media (max-width: 1600px) {
-  .pomodoro__buttons {
-    margin-top: 22px;
-  }
-}
-
 @media (max-width: 420px) {
   .pomodoro {
     &__buttons {
@@ -88,5 +82,11 @@
     &__button {
       width: 105.2px;
     }
+  }
+}
+
+@media (max-width: 1600px) {
+  .pomodoro__buttons {
+    margin-top: 22px;
   }
 }
