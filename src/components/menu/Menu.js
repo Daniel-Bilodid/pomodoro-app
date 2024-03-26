@@ -252,7 +252,7 @@ const Menu = ({
     bodyElement.style.fontFamily = bodyEl;
     endAnimation();
   };
-  console.log(activeFont);
+
   return (
     <>
       <div className="menu__icon">
