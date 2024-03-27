@@ -174,7 +174,7 @@ const Menu = ({
     switch (type) {
       case "pomodoro":
         if (pomodoro !== 0) {
-          updatePomodoro(pomodoro - 5);
+          updatePomodoro(pomodoro - 1);
         }
         break;
       case "short":

@@ -3,6 +3,7 @@ import "./timer.scss";
 import { connect } from "react-redux";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import bell from "../../assets/bell sound.wav";
 
 const Timer = ({
   pomodoro,
@@ -22,6 +23,10 @@ const Timer = ({
   let [timerColor, setTimerColor] = useState("#f87070");
   let [timerFont, setTimerFont] = useState("kumbh");
 
+  const playAudio = () => {
+    const audio = new Audio(bell);
+    audio.play();
+  };
   // useEffect(() => {
   //   if (totalTimeInSeconds !== 0) {
   //     setProgress((progress = totalTimeInSeconds));
@@ -61,7 +66,7 @@ const Timer = ({
         break;
       default:
     }
-    
+
     switch (activeFont) {
       case "kumbh":
         setTimerFont("timer__count kumbh");
@@ -99,6 +104,7 @@ const Timer = ({
                 setIsRunning(false);
                 setSeconds(0);
                 setTimerBtn("restart");
+                playAudio();
                 return 0;
               }
               return prevMinutes - 1;
